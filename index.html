@@ -229,7 +229,9 @@
       <br>
       Powered by Legend12Tech QuickQuote
     </div>
-
+<button onclick="downloadPDF()">
+  DOWNLOAD PDF
+</button>
   </div>
 
 </div>
@@ -270,7 +272,9 @@ function generateQuote() {
 
   document.getElementById("quote").style.display = "block";
 }
-
+function downloadPDF() {
+  window.print();
+}
 </script>
 
 </body>
