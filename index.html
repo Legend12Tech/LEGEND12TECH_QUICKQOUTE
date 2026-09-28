@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Legend12Tech QuickQuote</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      color: #111827;
+      text-align: center;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+
+    textarea {
+      height: 100px;
+      resize: vertical;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 25px;
+      padding: 14px;
+      background: #111827;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #2563eb;
+    }
+
+    #quote {
+      display: none;
+      margin-top: 30px;
+      padding: 20px;
+      border: 2px solid #111827;
+      border-radius: 10px;
+      background: white;
+    }
+
+    .quote-title {
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .total {
+      font-size: 22px;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1>Legend12Tech QuickQuote</h1>
+
+    <p class="subtitle">
+      Create a professional quotation in under 1 minute.
+    </p>
+
+    <label>Business Name</label>
+    <input id="business" type="text" placeholder="Enter your business name">
+
+    <label>Customer Name</label>
+    <input id="customer" type="text" placeholder="Enter customer's name">
+
+    <label>Service / Project</label>
+    <input id="service" type="text" placeholder="e.g. Website Design">
+
+    <label>Description</label>
+    <textarea id="description" placeholder="Describe what the customer wants"></textarea>
+
+    <label>Price</label>
+    <input id="price" type="number" placeholder="e.g. 300">
+
+    <label>Delivery Time</label>
+    <input id="delivery" type="text" placeholder="e.g. 7 days">
+
+    <button onclick="generateQuote()">
+      GENERATE QUOTE
+    </button>
+
+    <div id="quote">
+
+      <div class="quote-title">
+        QUOTATION
+      </div>
+
+      <p><strong>Business:</strong> <span id="qBusiness"></span></p>
+
+      <p><strong>Customer:</strong> <span id="qCustomer"></span></p>
+
+      <p><strong>Project:</strong> <span id="qService"></span></p>
+
+      <p><strong>Description:</strong></p>
+      <p id="qDescription"></p>
+
+      <p><strong>Delivery:</strong> <span id="qDelivery"></span></p>
+
+      <p class="total">
+        Total: $<span id="qPrice"></span>
+      </p>
+
+      <p>
+        Thank you for your business.
+      </p>
+
+    </div>
+
+  </div>
+
+  <script>
+    function generateQuote() {
+
+      document.getElementById("qBusiness").textContent =
+        document.getElementById("business").value;
+
+      document.getElementById("qCustomer").textContent =
+        document.getElementById("customer").value;
+
+      document.getElementById("qService").textContent =
+        document.getElementById("service").value;
+
+      document.getElementById("qDescription").textContent =
+        document.getElementById("description").value;
+
+      document.getElementById("qPrice").textContent =
+        document.getElementById("price").value;
+
+      document.getElementById("qDelivery").textContent =
+        document.getElementById("delivery").value;
+
+      document.getElementById("quote").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
