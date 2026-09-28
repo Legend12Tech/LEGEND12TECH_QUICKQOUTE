@@ -3,18 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Legend12Tech QuickQuote</title>
 
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f4f7fb;
+      background: #f3f6fa;
       margin: 0;
       padding: 20px;
     }
 
     .container {
-      max-width: 600px;
+      max-width: 650px;
       margin: auto;
       background: white;
       padding: 25px;
@@ -23,14 +24,14 @@
     }
 
     h1 {
-      color: #111827;
       text-align: center;
+      margin-bottom: 5px;
     }
 
     .subtitle {
       text-align: center;
       color: #666;
-      margin-bottom: 25px;
+      margin-bottom: 30px;
     }
 
     label {
@@ -43,15 +44,15 @@
     input,
     textarea {
       width: 100%;
-      padding: 12px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
       box-sizing: border-box;
+      padding: 12px;
+      border: 1px solid #d5dbe3;
+      border-radius: 8px;
       font-size: 16px;
     }
 
     textarea {
-      height: 100px;
+      height: 90px;
       resize: vertical;
     }
 
@@ -65,7 +66,6 @@
       border-radius: 8px;
       font-size: 17px;
       font-weight: bold;
-      cursor: pointer;
     }
 
     button:hover {
@@ -74,113 +74,204 @@
 
     #quote {
       display: none;
-      margin-top: 30px;
-      padding: 20px;
-      border: 2px solid #111827;
-      border-radius: 10px;
+      margin-top: 35px;
       background: white;
+      border: 1px solid #ddd;
+      padding: 30px;
+      border-radius: 10px;
     }
 
-    .quote-title {
-      text-align: center;
-      font-size: 24px;
-      font-weight: bold;
+    .quote-header {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 2px solid #111827;
+      padding-bottom: 15px;
       margin-bottom: 20px;
     }
 
-    .total {
+    .business-name {
       font-size: 22px;
       font-weight: bold;
+    }
+
+    .quote-title {
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    .quote-info {
+      margin-bottom: 20px;
+    }
+
+    .quote-info p {
+      margin: 7px 0;
+    }
+
+    .description {
+      background: #f8fafc;
+      padding: 15px;
+      border-radius: 8px;
       margin-top: 15px;
+    }
+
+    .total {
+      text-align: right;
+      font-size: 25px;
+      font-weight: bold;
+      margin-top: 25px;
+      border-top: 2px solid #ddd;
+      padding-top: 15px;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 30px;
+      color: #666;
+      font-size: 14px;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="container">
+<div class="container">
 
-    <h1>Legend12Tech QuickQuote</h1>
+  <h1>Legend12Tech QuickQuote</h1>
 
-    <p class="subtitle">
-      Create a professional quotation in under 1 minute.
-    </p>
+  <p class="subtitle">
+    Create a professional quotation in under 1 minute.
+  </p>
 
-    <label>Business Name</label>
-    <input id="business" type="text" placeholder="Enter your business name">
+  <label>Business Name</label>
+  <input id="business" type="text" placeholder="Enter your business name">
 
-    <label>Customer Name</label>
-    <input id="customer" type="text" placeholder="Enter customer's name">
+  <label>Customer Name</label>
+  <input id="customer" type="text" placeholder="Enter customer's name">
 
-    <label>Service / Project</label>
-    <input id="service" type="text" placeholder="e.g. Website Design">
+  <label>Service / Project</label>
+  <input id="service" type="text" placeholder="e.g. Website Design">
 
-    <label>Description</label>
-    <textarea id="description" placeholder="Describe what the customer wants"></textarea>
+  <label>Description</label>
+  <textarea id="description" placeholder="Describe what the customer wants"></textarea>
 
-    <label>Price</label>
-    <input id="price" type="number" placeholder="e.g. 300">
+  <label>Price</label>
+  <input id="price" type="number" placeholder="e.g. 300">
 
-    <label>Delivery Time</label>
-    <input id="delivery" type="text" placeholder="e.g. 7 days">
+  <label>Delivery Time</label>
+  <input id="delivery" type="text" placeholder="e.g. 7 days">
 
-    <button onclick="generateQuote()">
-      GENERATE QUOTE
-    </button>
+  <button onclick="generateQuote()">
+    GENERATE QUOTE
+  </button>
 
-    <div id="quote">
+
+  <div id="quote">
+
+    <div class="quote-header">
+
+      <div class="business-name" id="qBusiness">
+        Business Name
+      </div>
 
       <div class="quote-title">
         QUOTATION
       </div>
 
-      <p><strong>Business:</strong> <span id="qBusiness"></span></p>
+    </div>
 
-      <p><strong>Customer:</strong> <span id="qCustomer"></span></p>
 
-      <p><strong>Project:</strong> <span id="qService"></span></p>
+    <div class="quote-info">
 
-      <p><strong>Description:</strong></p>
-      <p id="qDescription"></p>
-
-      <p><strong>Delivery:</strong> <span id="qDelivery"></span></p>
-
-      <p class="total">
-        Total: $<span id="qPrice"></span>
+      <p>
+        <strong>Quote No:</strong>
+        <span id="qNumber"></span>
       </p>
 
       <p>
-        Thank you for your business.
+        <strong>Date:</strong>
+        <span id="qDate"></span>
+      </p>
+
+      <p>
+        <strong>Customer:</strong>
+        <span id="qCustomer"></span>
+      </p>
+
+      <p>
+        <strong>Project:</strong>
+        <span id="qService"></span>
+      </p>
+
+      <p>
+        <strong>Delivery:</strong>
+        <span id="qDelivery"></span>
       </p>
 
     </div>
 
+
+    <div class="description">
+
+      <strong>Description</strong>
+
+      <p id="qDescription"></p>
+
+    </div>
+
+
+    <div class="total">
+      Total: $<span id="qPrice"></span>
+    </div>
+
+
+    <div class="footer">
+      Thank you for your business.
+      <br>
+      Powered by Legend12Tech QuickQuote
+    </div>
+
   </div>
 
-  <script>
-    function generateQuote() {
+</div>
 
-      document.getElementById("qBusiness").textContent =
-        document.getElementById("business").value;
 
-      document.getElementById("qCustomer").textContent =
-        document.getElementById("customer").value;
+<script>
 
-      document.getElementById("qService").textContent =
-        document.getElementById("service").value;
+function generateQuote() {
 
-      document.getElementById("qDescription").textContent =
-        document.getElementById("description").value;
+  document.getElementById("qBusiness").textContent =
+    document.getElementById("business").value;
 
-      document.getElementById("qPrice").textContent =
-        document.getElementById("price").value;
+  document.getElementById("qCustomer").textContent =
+    document.getElementById("customer").value;
 
-      document.getElementById("qDelivery").textContent =
-        document.getElementById("delivery").value;
+  document.getElementById("qService").textContent =
+    document.getElementById("service").value;
 
-      document.getElementById("quote").style.display = "block";
-    }
-  </script>
+  document.getElementById("qDescription").textContent =
+    document.getElementById("description").value;
+
+  document.getElementById("qPrice").textContent =
+    document.getElementById("price").value;
+
+  document.getElementById("qDelivery").textContent =
+    document.getElementById("delivery").value;
+
+
+  const today = new Date();
+
+  document.getElementById("qDate").textContent =
+    today.toLocaleDateString();
+
+
+  document.getElementById("qNumber").textContent =
+    "Q-" + Math.floor(1000 + Math.random() * 9000);
+
+
+  document.getElementById("quote").style.display = "block";
+}
+
+</script>
 
 </body>
 </html>
