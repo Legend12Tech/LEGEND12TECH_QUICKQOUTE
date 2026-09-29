@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>Legend12Tech QuickQuote</title>
 
@@ -20,23 +23,24 @@ body {
 }
 
 .container {
-  max-width: 650px;
-  margin: 30px auto;
+  max-width: 700px;
+  margin: auto;
   padding: 20px;
 }
 
-/* BRAND */
 
-.brand {
+/* HERO */
+
+.hero {
   text-align: center;
-  margin-bottom: 10px;
+  padding: 35px 15px 30px;
 }
 
 .logo-icon {
-  width: 70px;
-  height: 70px;
-  margin: 0 auto 12px;
-  border-radius: 18px;
+  width: 75px;
+  height: 75px;
+  margin: 0 auto 15px;
+  border-radius: 20px;
   background: linear-gradient(135deg, #0b1f4d, #1677ff);
   color: white;
   display: flex;
@@ -44,6 +48,7 @@ body {
   justify-content: center;
   font-size: 38px;
   font-weight: bold;
+  box-shadow: 0 8px 20px rgba(22,119,255,0.25);
 }
 
 .brand-name {
@@ -52,22 +57,73 @@ body {
   color: #0b1f4d;
 }
 
-.brand-name span,
-.quickquote span {
+.brand-name span {
   color: #1677ff;
 }
 
 .quickquote {
-  font-size: 25px;
+  font-size: 26px;
   font-weight: bold;
-  margin-top: 3px;
+  margin-top: 5px;
 }
 
-.tagline {
-  color: #6b7280;
-  margin-top: 8px;
-  margin-bottom: 28px;
+.quickquote span {
+  color: #1677ff;
 }
+
+.hero h2 {
+  font-size: 30px;
+  margin: 20px 0 10px;
+}
+
+.hero p {
+  color: #6b7280;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.start-btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 15px 25px;
+  background: #1677ff;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+
+/* FEATURES */
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.feature {
+  background: white;
+  padding: 18px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 5px 18px rgba(0,0,0,0.06);
+}
+
+.feature-icon {
+  font-size: 25px;
+}
+
+.feature strong {
+  display: block;
+  margin-top: 7px;
+}
+
+.feature small {
+  color: #6b7280;
+}
+
 
 /* BOXES */
 
@@ -80,6 +136,7 @@ body {
   margin-bottom: 25px;
   box-shadow: 0 5px 20px rgba(0,0,0,0.08);
 }
+
 
 /* FORM */
 
@@ -104,6 +161,7 @@ textarea {
   min-height: 100px;
 }
 
+
 /* BUTTONS */
 
 button {
@@ -114,6 +172,7 @@ button {
   border-radius: 7px;
   font-size: 16px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .generate-btn {
@@ -136,10 +195,16 @@ button {
   color: white;
 }
 
-.clear-btn {
+.load-btn {
+  background: #2563eb;
+  color: white;
+}
+
+.delete-btn {
   background: #dc2626;
   color: white;
 }
+
 
 /* QUOTE */
 
@@ -183,6 +248,7 @@ button {
   font-weight: bold;
 }
 
+
 /* HISTORY */
 
 .history-title {
@@ -213,33 +279,50 @@ button {
   padding: 10px;
 }
 
-.load-btn {
-  background: #2563eb;
-  color: white;
-}
 
-.delete-btn {
-  background: #dc2626;
-  color: white;
-}
+/* FOOTER */
 
 .footer {
   text-align: center;
   color: #6b7280;
-  margin-top: 25px;
+  margin-top: 30px;
+  padding-bottom: 20px;
   font-size: 13px;
 }
 
+
+/* MOBILE */
+
+@media (max-width: 500px) {
+
+.hero h2 {
+  font-size: 25px;
+}
+
+.features {
+  grid-template-columns: 1fr 1fr;
+}
+
+.quote-header {
+  flex-direction: column;
+}
+
+}
+
 </style>
+
 </head>
+
 
 <body>
 
+
 <div class="container">
 
-<!-- BRAND -->
 
-<div class="brand">
+<!-- HERO -->
+
+<section class="hero">
 
 <div class="logo-icon">
 Q✓
@@ -253,63 +336,194 @@ Legend12<span>Tech</span>
 Quick<span>Quote</span>
 </div>
 
-<div class="tagline">
-Create professional quotations in minutes.
+<h2>
+Create Professional Quotations in Minutes
+</h2>
+
+<p>
+Create, save, download and share professional quotations
+from your phone or computer.
+</p>
+
+<a
+href="#creator"
+class="start-btn">
+
+START CREATING A QUOTE
+
+</a>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<div class="features">
+
+<div class="feature">
+
+<div class="feature-icon">
+⚡
+</div>
+
+<strong>Fast</strong>
+
+<small>
+Create quotes quickly
+</small>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-icon">
+📄
+</div>
+
+<strong>PDF</strong>
+
+<small>
+Download professional PDF
+</small>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-icon">
+📲
+</div>
+
+<strong>WhatsApp</strong>
+
+<small>
+Share with customers
+</small>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-icon">
+💾
+</div>
+
+<strong>History</strong>
+
+<small>
+Save your quotations
+</small>
+
 </div>
 
 </div>
 
 
-<!-- FORM -->
+<!-- CREATOR -->
 
-<div class="form-box">
+<div
+class="form-box"
+id="creator">
+
+<h2>
+Create Your Quote
+</h2>
+
 
 <label>Business Name</label>
-<input id="business" type="text"
+
+<input
+id="business"
+type="text"
 placeholder="e.g. Legend Web Design">
 
+
 <label>Business Phone</label>
-<input id="phone" type="tel"
+
+<input
+id="phone"
+type="tel"
 placeholder="e.g. +234 706 130 3234">
 
+
 <label>Business Address</label>
-<input id="address" type="text"
+
+<input
+id="address"
+type="text"
 placeholder="e.g. Abuja, Nigeria">
 
+
 <label>Customer Name</label>
-<input id="customer" type="text"
+
+<input
+id="customer"
+type="text"
 placeholder="e.g. John Smith">
 
+
 <label>Customer Email</label>
-<input id="email" type="email"
+
+<input
+id="email"
+type="email"
 placeholder="e.g. john@example.com">
 
+
 <label>Service / Project</label>
-<input id="service" type="text"
+
+<input
+id="service"
+type="text"
 placeholder="e.g. Restaurant Website">
 
+
 <label>Description</label>
-<textarea id="description"
+
+<textarea
+id="description"
 placeholder="Describe the project or service"></textarea>
 
+
 <label>Price</label>
-<input id="price" type="number"
+
+<input
+id="price"
+type="number"
 placeholder="e.g. 300">
+
 
 <label>Currency</label>
 
 <select id="currency">
 
-<option value="$">USD ($)</option>
-<option value="£">GBP (£)</option>
-<option value="€">EUR (€)</option>
-<option value="₦">NGN (₦)</option>
+<option value="$">
+USD ($)
+</option>
+
+<option value="£">
+GBP (£)
+</option>
+
+<option value="€">
+EUR (€)
+</option>
+
+<option value="₦">
+NGN (₦)
+</option>
 
 </select>
 
+
 <label>Delivery Time</label>
 
-<input id="delivery" type="text"
+<input
+id="delivery"
+type="text"
 placeholder="e.g. 7 days">
 
 
@@ -373,26 +587,38 @@ Date:
 
 
 <div class="info">
+
 <strong>Customer:</strong>
+
 <span id="qCustomer"></span>
+
 </div>
 
 
 <div class="info">
+
 <strong>Email:</strong>
+
 <span id="qEmail"></span>
+
 </div>
 
 
 <div class="info">
+
 <strong>Project:</strong>
+
 <span id="qService"></span>
+
 </div>
 
 
 <div class="info">
+
 <strong>Delivery:</strong>
+
 <span id="qDelivery"></span>
+
 </div>
 
 
@@ -409,9 +635,13 @@ Date:
 
 Total:
 
-<span id="qCurrency">$</span>
+<span id="qCurrency">
+$
+</span>
 
-<span id="qPrice">0</span>
+<span id="qPrice">
+0
+</span>
 
 </div>
 
@@ -471,6 +701,14 @@ No saved quotes yet.
 </div>
 
 </div>
+
+
+<div class="footer">
+
+© 2026 Legend12Tech QuickQuote
+
+</div>
+
 
 </div>
 
@@ -576,7 +814,9 @@ return;
 
 
 var quotes =
-JSON.parse(localStorage.getItem("quickQuotes")) || [];
+JSON.parse(
+localStorage.getItem("quickQuotes")
+) || [];
 
 
 quotes.push(quote);
@@ -596,12 +836,15 @@ alert("Quote saved successfully!");
 }
 
 
-/* LOAD HISTORY */
+/* HISTORY */
 
 function loadHistory() {
 
 var quotes =
-JSON.parse(localStorage.getItem("quickQuotes")) || [];
+JSON.parse(
+localStorage.getItem("quickQuotes")
+) || [];
+
 
 var history =
 document.getElementById("historyList");
@@ -678,12 +921,15 @@ history.appendChild(item);
 }
 
 
-/* OPEN SAVED QUOTE */
+/* OPEN QUOTE */
 
 function loadQuote(index) {
 
 var quotes =
-JSON.parse(localStorage.getItem("quickQuotes")) || [];
+JSON.parse(
+localStorage.getItem("quickQuotes")
+) || [];
+
 
 var quote =
 quotes[index];
@@ -765,12 +1011,14 @@ behavior: "smooth"
 }
 
 
-/* DELETE QUOTE */
+/* DELETE */
 
 function deleteQuote(index) {
 
 var quotes =
-JSON.parse(localStorage.getItem("quickQuotes")) || [];
+JSON.parse(
+localStorage.getItem("quickQuotes")
+) || [];
 
 
 quotes.splice(index, 1);
@@ -840,7 +1088,9 @@ pdfWindow.document.write(`
 
 <head>
 
-<title>Quotation ${quoteNumber}</title>
+<title>
+Quotation ${quoteNumber}
+</title>
 
 <style>
 
@@ -934,23 +1184,28 @@ ${business}
 
 <div class="contact">
 
-📞 Phone: ${phone}
+📞 Phone:
+${phone}
 
 <br>
 
-📍 Address: ${address}
+📍 Address:
+${address}
 
 </div>
 
 </div>
+
 
 <div class="meta">
 
-Quote No: ${quoteNumber}
+Quote No:
+${quoteNumber}
 
 <br>
 
-Date: ${date}
+Date:
+${date}
 
 </div>
 
@@ -958,32 +1213,54 @@ Date: ${date}
 
 
 <div class="row">
-<strong>Customer:</strong>
+
+<strong>
+Customer:
+</strong>
+
 ${customer}
+
 </div>
 
 
 <div class="row">
-<strong>Email:</strong>
+
+<strong>
+Email:
+</strong>
+
 ${email}
+
 </div>
 
 
 <div class="row">
-<strong>Project:</strong>
+
+<strong>
+Project:
+</strong>
+
 ${service}
+
 </div>
 
 
 <div class="row">
-<strong>Delivery:</strong>
+
+<strong>
+Delivery:
+</strong>
+
 ${delivery}
+
 </div>
 
 
 <div class="description">
 
-<strong>Description</strong>
+<strong>
+Description
+</strong>
 
 <p>
 ${description}
@@ -1022,6 +1299,7 @@ Powered by Legend12Tech QuickQuote
 pdfWindow.document.close();
 
 pdfWindow.focus();
+
 
 setTimeout(function() {
 
@@ -1078,45 +1356,58 @@ var message =
 "QUOTATION%0A%0A" +
 
 "Business: " +
-encodeURIComponent(business) + "%0A" +
+encodeURIComponent(business) +
+"%0A" +
 
 "Phone: " +
-encodeURIComponent(phone) + "%0A" +
+encodeURIComponent(phone) +
+"%0A" +
 
 "Address: " +
-encodeURIComponent(address) + "%0A%0A" +
+encodeURIComponent(address) +
+"%0A%0A" +
 
 "Quote No: " +
-encodeURIComponent(quoteNumber) + "%0A" +
+encodeURIComponent(quoteNumber) +
+"%0A" +
 
 "Date: " +
-encodeURIComponent(date) + "%0A%0A" +
+encodeURIComponent(date) +
+"%0A%0A" +
 
 "Customer: " +
-encodeURIComponent(customer) + "%0A" +
+encodeURIComponent(customer) +
+"%0A" +
 
 "Email: " +
-encodeURIComponent(email) + "%0A" +
+encodeURIComponent(email) +
+"%0A" +
 
 "Project: " +
-encodeURIComponent(service) + "%0A" +
+encodeURIComponent(service) +
+"%0A" +
 
 "Delivery: " +
-encodeURIComponent(delivery) + "%0A%0A" +
+encodeURIComponent(delivery) +
+"%0A%0A" +
 
 "Description: " +
-encodeURIComponent(description) + "%0A%0A" +
+encodeURIComponent(description) +
+"%0A%0A" +
 
 "Total: " +
-encodeURIComponent(currency + price) + "%0A%0A" +
+encodeURIComponent(currency + price) +
+"%0A%0A" +
 
-"Thank you for your business.%0A%0A" +
+"Thank you for your business." +
+"%0A%0A" +
 
 "Powered by Legend12Tech QuickQuote";
 
 
 var whatsappURL =
-"https://wa.me/?text=" + message;
+"https://wa.me/?text=" +
+message;
 
 
 window.open(
@@ -1127,7 +1418,21 @@ whatsappURL,
 }
 
 
-/* LOAD HISTORY WHEN PAGE OPENS */
+/* START BUTTON */
+
+document.querySelector(".start-btn")
+.addEventListener("click", function() {
+
+setTimeout(function() {
+
+document.getElementById("business").focus();
+
+}, 400);
+
+});
+
+
+/* LOAD HISTORY */
 
 loadHistory();
 
