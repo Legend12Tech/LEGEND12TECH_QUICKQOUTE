@@ -25,7 +25,7 @@ body {
   padding: 20px;
 }
 
-/* BRANDING */
+/* BRAND */
 
 .brand {
   text-align: center;
@@ -44,7 +44,6 @@ body {
   justify-content: center;
   font-size: 38px;
   font-weight: bold;
-  box-shadow: 0 8px 20px rgba(22,119,255,0.25);
 }
 
 .brand-name {
@@ -53,7 +52,8 @@ body {
   color: #0b1f4d;
 }
 
-.brand-name span {
+.brand-name span,
+.quickquote span {
   color: #1677ff;
 }
 
@@ -61,11 +61,6 @@ body {
   font-size: 25px;
   font-weight: bold;
   margin-top: 3px;
-  color: #17202a;
-}
-
-.quickquote span {
-  color: #1677ff;
 }
 
 .tagline {
@@ -74,14 +69,19 @@ body {
   margin-bottom: 28px;
 }
 
+/* BOXES */
+
 .form-box,
-.quote-box {
+.quote-box,
+.history-box {
   background: white;
   padding: 25px;
   border-radius: 12px;
   margin-bottom: 25px;
   box-shadow: 0 5px 20px rgba(0,0,0,0.08);
 }
+
+/* FORM */
 
 label {
   display: block;
@@ -104,6 +104,8 @@ textarea {
   min-height: 100px;
 }
 
+/* BUTTONS */
+
 button {
   width: 100%;
   padding: 14px;
@@ -119,6 +121,11 @@ button {
   color: white;
 }
 
+.save-btn {
+  background: #16a34a;
+  color: white;
+}
+
 .pdf-btn {
   background: #2563eb;
   color: white;
@@ -128,6 +135,13 @@ button {
   background: #25D366;
   color: white;
 }
+
+.clear-btn {
+  background: #dc2626;
+  color: white;
+}
+
+/* QUOTE */
 
 .quote-header {
   display: flex;
@@ -167,6 +181,46 @@ button {
   text-align: right;
   font-size: 24px;
   font-weight: bold;
+}
+
+/* HISTORY */
+
+.history-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.history-item {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 15px;
+  margin-top: 12px;
+}
+
+.history-item strong {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.history-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.history-buttons button {
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.load-btn {
+  background: #2563eb;
+  color: white;
+}
+
+.delete-btn {
+  background: #dc2626;
+  color: white;
 }
 
 .footer {
@@ -258,6 +312,7 @@ placeholder="e.g. 300">
 <input id="delivery" type="text"
 placeholder="e.g. 7 days">
 
+
 <button
 class="generate-btn"
 onclick="generateQuote()">
@@ -318,34 +373,26 @@ Date:
 
 
 <div class="info">
-
 <strong>Customer:</strong>
 <span id="qCustomer"></span>
-
 </div>
 
 
 <div class="info">
-
 <strong>Email:</strong>
 <span id="qEmail"></span>
-
 </div>
 
 
 <div class="info">
-
 <strong>Project:</strong>
 <span id="qService"></span>
-
 </div>
 
 
 <div class="info">
-
 <strong>Delivery:</strong>
 <span id="qDelivery"></span>
-
 </div>
 
 
@@ -367,6 +414,15 @@ Total:
 <span id="qPrice">0</span>
 
 </div>
+
+
+<button
+class="save-btn"
+onclick="saveQuote()">
+
+💾 SAVE QUOTE
+
+</button>
 
 
 <button
@@ -399,10 +455,30 @@ Powered by Legend12Tech QuickQuote
 
 </div>
 
+
+<!-- HISTORY -->
+
+<div class="history-box">
+
+<div class="history-title">
+📋 Quote History
+</div>
+
+<div id="historyList">
+
+No saved quotes yet.
+
+</div>
+
+</div>
+
 </div>
 
 
 <script>
+
+
+/* GENERATE QUOTE */
 
 function generateQuote() {
 
@@ -445,6 +521,274 @@ new Date().toLocaleDateString();
 }
 
 
+/* SAVE QUOTE */
+
+function saveQuote() {
+
+var quote = {
+
+business:
+document.getElementById("business").value,
+
+phone:
+document.getElementById("phone").value,
+
+address:
+document.getElementById("address").value,
+
+customer:
+document.getElementById("customer").value,
+
+email:
+document.getElementById("email").value,
+
+service:
+document.getElementById("service").value,
+
+description:
+document.getElementById("description").value,
+
+price:
+document.getElementById("price").value,
+
+currency:
+document.getElementById("currency").value,
+
+delivery:
+document.getElementById("delivery").value,
+
+quoteNumber:
+document.getElementById("qNumber").textContent,
+
+date:
+document.getElementById("qDate").textContent
+
+};
+
+
+if (!quote.customer) {
+
+alert("Please enter customer name.");
+
+return;
+
+}
+
+
+var quotes =
+JSON.parse(localStorage.getItem("quickQuotes")) || [];
+
+
+quotes.push(quote);
+
+
+localStorage.setItem(
+"quickQuotes",
+JSON.stringify(quotes)
+);
+
+
+loadHistory();
+
+
+alert("Quote saved successfully!");
+
+}
+
+
+/* LOAD HISTORY */
+
+function loadHistory() {
+
+var quotes =
+JSON.parse(localStorage.getItem("quickQuotes")) || [];
+
+var history =
+document.getElementById("historyList");
+
+
+if (quotes.length === 0) {
+
+history.innerHTML =
+"No saved quotes yet.";
+
+return;
+
+}
+
+
+history.innerHTML = "";
+
+
+quotes.forEach(function(quote, index) {
+
+var item =
+document.createElement("div");
+
+item.className =
+"history-item";
+
+
+item.innerHTML = `
+
+<strong>
+${quote.quoteNumber}
+</strong>
+
+Customer:
+${quote.customer}
+
+<br>
+
+Total:
+${quote.currency}${quote.price}
+
+<br>
+
+Date:
+${quote.date}
+
+<div class="history-buttons">
+
+<button
+class="load-btn"
+onclick="loadQuote(${index})">
+
+OPEN
+
+</button>
+
+<button
+class="delete-btn"
+onclick="deleteQuote(${index})">
+
+DELETE
+
+</button>
+
+</div>
+
+`;
+
+
+history.appendChild(item);
+
+});
+
+}
+
+
+/* OPEN SAVED QUOTE */
+
+function loadQuote(index) {
+
+var quotes =
+JSON.parse(localStorage.getItem("quickQuotes")) || [];
+
+var quote =
+quotes[index];
+
+
+document.getElementById("business").value =
+quote.business;
+
+document.getElementById("phone").value =
+quote.phone;
+
+document.getElementById("address").value =
+quote.address;
+
+document.getElementById("customer").value =
+quote.customer;
+
+document.getElementById("email").value =
+quote.email;
+
+document.getElementById("service").value =
+quote.service;
+
+document.getElementById("description").value =
+quote.description;
+
+document.getElementById("price").value =
+quote.price;
+
+document.getElementById("currency").value =
+quote.currency;
+
+document.getElementById("delivery").value =
+quote.delivery;
+
+
+document.getElementById("qBusiness").textContent =
+quote.business;
+
+document.getElementById("qPhone").textContent =
+quote.phone;
+
+document.getElementById("qAddress").textContent =
+quote.address;
+
+document.getElementById("qCustomer").textContent =
+quote.customer;
+
+document.getElementById("qEmail").textContent =
+quote.email;
+
+document.getElementById("qService").textContent =
+quote.service;
+
+document.getElementById("qDescription").textContent =
+quote.description;
+
+document.getElementById("qPrice").textContent =
+quote.price;
+
+document.getElementById("qCurrency").textContent =
+quote.currency;
+
+document.getElementById("qDelivery").textContent =
+quote.delivery;
+
+document.getElementById("qNumber").textContent =
+quote.quoteNumber;
+
+document.getElementById("qDate").textContent =
+quote.date;
+
+
+window.scrollTo({
+top: 0,
+behavior: "smooth"
+});
+
+}
+
+
+/* DELETE QUOTE */
+
+function deleteQuote(index) {
+
+var quotes =
+JSON.parse(localStorage.getItem("quickQuotes")) || [];
+
+
+quotes.splice(index, 1);
+
+
+localStorage.setItem(
+"quickQuotes",
+JSON.stringify(quotes)
+);
+
+
+loadHistory();
+
+}
+
+
+/* PDF */
+
 function downloadPDF() {
 
 var business =
@@ -484,7 +828,8 @@ var date =
 document.getElementById("qDate").textContent;
 
 
-var pdfWindow = window.open("", "_blank");
+var pdfWindow =
+window.open("", "_blank");
 
 
 pdfWindow.document.write(`
@@ -599,7 +944,6 @@ ${business}
 
 </div>
 
-
 <div class="meta">
 
 Quote No: ${quoteNumber}
@@ -674,6 +1018,7 @@ Powered by Legend12Tech QuickQuote
 
 `);
 
+
 pdfWindow.document.close();
 
 pdfWindow.focus();
@@ -686,6 +1031,8 @@ pdfWindow.print();
 
 }
 
+
+/* WHATSAPP */
 
 function shareWhatsApp() {
 
@@ -727,29 +1074,41 @@ document.getElementById("qDate").textContent;
 
 
 var message =
+
 "QUOTATION%0A%0A" +
 
-"Business: " + encodeURIComponent(business) + "%0A" +
+"Business: " +
+encodeURIComponent(business) + "%0A" +
 
-"Phone: " + encodeURIComponent(phone) + "%0A" +
+"Phone: " +
+encodeURIComponent(phone) + "%0A" +
 
-"Address: " + encodeURIComponent(address) + "%0A%0A" +
+"Address: " +
+encodeURIComponent(address) + "%0A%0A" +
 
-"Quote No: " + encodeURIComponent(quoteNumber) + "%0A" +
+"Quote No: " +
+encodeURIComponent(quoteNumber) + "%0A" +
 
-"Date: " + encodeURIComponent(date) + "%0A%0A" +
+"Date: " +
+encodeURIComponent(date) + "%0A%0A" +
 
-"Customer: " + encodeURIComponent(customer) + "%0A" +
+"Customer: " +
+encodeURIComponent(customer) + "%0A" +
 
-"Email: " + encodeURIComponent(email) + "%0A" +
+"Email: " +
+encodeURIComponent(email) + "%0A" +
 
-"Project: " + encodeURIComponent(service) + "%0A" +
+"Project: " +
+encodeURIComponent(service) + "%0A" +
 
-"Delivery: " + encodeURIComponent(delivery) + "%0A%0A" +
+"Delivery: " +
+encodeURIComponent(delivery) + "%0A%0A" +
 
-"Description: " + encodeURIComponent(description) + "%0A%0A" +
+"Description: " +
+encodeURIComponent(description) + "%0A%0A" +
 
-"Total: " + encodeURIComponent(currency + price) + "%0A%0A" +
+"Total: " +
+encodeURIComponent(currency + price) + "%0A%0A" +
 
 "Thank you for your business.%0A%0A" +
 
@@ -760,9 +1119,17 @@ var whatsappURL =
 "https://wa.me/?text=" + message;
 
 
-window.open(whatsappURL, "_blank");
+window.open(
+whatsappURL,
+"_blank"
+);
 
 }
+
+
+/* LOAD HISTORY WHEN PAGE OPENS */
+
+loadHistory();
 
 </script>
 
