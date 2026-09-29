@@ -108,6 +108,13 @@ textarea {
   font-size: 14px;
 }
 
+.business-contact {
+  margin-top: 8px;
+  color: #6b7280;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
 .info {
   margin: 12px 0;
 }
@@ -177,6 +184,12 @@ Create professional quotations in minutes.
 <label>Business Name</label>
 <input id="business" type="text" placeholder="e.g. Legend Web Design">
 
+<label>Business Phone</label>
+<input id="phone" type="tel" placeholder="e.g. +234 706 130 3234">
+
+<label>Business Address</label>
+<input id="address" type="text" placeholder="e.g. Abuja, Nigeria">
+
 <label>Customer Name</label>
 <input id="customer" type="text" placeholder="e.g. John Smith">
 
@@ -216,7 +229,16 @@ Create professional quotations in minutes.
 
     <div>
       <div class="quote-title">QUOTATION</div>
-      <div id="qBusiness">Your Business</div>
+
+      <div id="qBusiness">
+        Your Business
+      </div>
+
+      <div class="business-contact">
+        <div id="qPhone"></div>
+        <div id="qAddress"></div>
+      </div>
+
     </div>
 
     <div class="quote-number">
@@ -225,6 +247,7 @@ Create professional quotations in minutes.
     </div>
 
   </div>
+
 
   <div class="info">
     <strong>Customer:</strong>
@@ -277,6 +300,12 @@ function generateQuote() {
   document.getElementById("qBusiness").textContent =
     document.getElementById("business").value;
 
+  document.getElementById("qPhone").textContent =
+    document.getElementById("phone").value;
+
+  document.getElementById("qAddress").textContent =
+    document.getElementById("address").value;
+
   document.getElementById("qCustomer").textContent =
     document.getElementById("customer").value;
 
@@ -292,25 +321,4 @@ function generateQuote() {
   document.getElementById("qPrice").textContent =
     document.getElementById("price").value;
 
-  document.getElementById("qCurrency").textContent =
-    document.getElementById("currency").value;
-
-  document.getElementById("qDelivery").textContent =
-    document.getElementById("delivery").value;
-
-  document.getElementById("qNumber").textContent =
-    "Q-" + Math.floor(1000 + Math.random() * 9000);
-
-  document.getElementById("qDate").textContent =
-    new Date().toLocaleDateString();
-
-}
-
-function downloadPDF() {
-  window.print();
-}
-
-</script>
-
-</body>
-</html>
+  document.getElementById("qCurrency").  
