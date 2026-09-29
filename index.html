@@ -25,14 +25,53 @@ body {
   padding: 20px;
 }
 
-h1 {
+/* BRANDING */
+
+.brand {
   text-align: center;
+  margin-bottom: 10px;
 }
 
-.subtitle {
-  text-align: center;
+.logo-icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 12px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #0b1f4d, #1677ff);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 38px;
+  font-weight: bold;
+  box-shadow: 0 8px 20px rgba(22,119,255,0.25);
+}
+
+.brand-name {
+  font-size: 30px;
+  font-weight: bold;
+  color: #0b1f4d;
+}
+
+.brand-name span {
+  color: #1677ff;
+}
+
+.quickquote {
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: 3px;
+  color: #17202a;
+}
+
+.quickquote span {
+  color: #1677ff;
+}
+
+.tagline {
   color: #6b7280;
-  margin-bottom: 25px;
+  margin-top: 8px;
+  margin-bottom: 28px;
 }
 
 .form-box,
@@ -144,11 +183,30 @@ button {
 
 <div class="container">
 
-<h1>Legend12Tech QuickQuote</h1>
+<!-- BRAND -->
 
-<p class="subtitle">
+<div class="brand">
+
+<div class="logo-icon">
+Q✓
+</div>
+
+<div class="brand-name">
+Legend12<span>Tech</span>
+</div>
+
+<div class="quickquote">
+Quick<span>Quote</span>
+</div>
+
+<div class="tagline">
 Create professional quotations in minutes.
-</p>
+</div>
+
+</div>
+
+
+<!-- FORM -->
 
 <div class="form-box">
 
@@ -211,6 +269,8 @@ GENERATE QUOTE
 </div>
 
 
+<!-- QUOTE -->
+
 <div class="quote-box">
 
 <div class="quote-header">
@@ -260,7 +320,6 @@ Date:
 <div class="info">
 
 <strong>Customer:</strong>
-
 <span id="qCustomer"></span>
 
 </div>
@@ -269,7 +328,6 @@ Date:
 <div class="info">
 
 <strong>Email:</strong>
-
 <span id="qEmail"></span>
 
 </div>
@@ -278,7 +336,6 @@ Date:
 <div class="info">
 
 <strong>Project:</strong>
-
 <span id="qService"></span>
 
 </div>
@@ -287,7 +344,6 @@ Date:
 <div class="info">
 
 <strong>Delivery:</strong>
-
 <span id="qDelivery"></span>
 
 </div>
@@ -618,7 +674,6 @@ Powered by Legend12Tech QuickQuote
 
 `);
 
-
 pdfWindow.document.close();
 
 pdfWindow.focus();
@@ -631,8 +686,6 @@ pdfWindow.print();
 
 }
 
-
-/* WHATSAPP SHARE */
 
 function shareWhatsApp() {
 
