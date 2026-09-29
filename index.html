@@ -179,8 +179,10 @@ Create professional quotations in minutes.
 
 <label>Customer Name</label>
 <input id="customer" type="text" placeholder="e.g. John Smith">
+
 <label>Customer Email</label>
 <input id="email" type="email" placeholder="e.g. john@example.com">
+
 <label>Service / Project</label>
 <input id="service" type="text" placeholder="e.g. Restaurant Website">
 
@@ -228,10 +230,12 @@ Create professional quotations in minutes.
     <strong>Customer:</strong>
     <span id="qCustomer"></span>
   </div>
-<div class="info">
-  <strong>Email:</strong>
-  <span id="qEmail"></span>
-</div>
+
+  <div class="info">
+    <strong>Email:</strong>
+    <span id="qEmail"></span>
+  </div>
+
   <div class="info">
     <strong>Project:</strong>
     <span id="qService"></span>
@@ -275,8 +279,10 @@ function generateQuote() {
 
   document.getElementById("qCustomer").textContent =
     document.getElementById("customer").value;
-document.getElementById("qEmail").textContent =
-  document.getElementById("email").value;
+
+  document.getElementById("qEmail").textContent =
+    document.getElementById("email").value;
+
   document.getElementById("qService").textContent =
     document.getElementById("service").value;
 
