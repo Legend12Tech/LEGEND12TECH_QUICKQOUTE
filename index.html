@@ -7,6 +7,7 @@
 <title>Legend12Tech QuickQuote</title>
 
 <style>
+
 * {
   box-sizing: border-box;
 }
@@ -26,7 +27,6 @@ body {
 
 h1 {
   text-align: center;
-  color: #111827;
 }
 
 .subtitle {
@@ -65,8 +65,7 @@ textarea {
   min-height: 100px;
 }
 
-.generate-btn,
-.pdf-btn {
+button {
   width: 100%;
   padding: 14px;
   margin-top: 20px;
@@ -89,9 +88,9 @@ textarea {
 .quote-header {
   display: flex;
   justify-content: space-between;
-  gap: 15px;
+  gap: 20px;
   border-bottom: 2px solid #e5e7eb;
-  padding-bottom: 15px;
+  padding-bottom: 18px;
   margin-bottom: 20px;
 }
 
@@ -101,10 +100,9 @@ textarea {
 }
 
 .business-contact {
-  margin-top: 8px;
-  color: #6b7280;
-  font-size: 14px;
-  line-height: 1.7;
+  margin-top: 10px;
+  line-height: 1.8;
+  color: #4b5563;
 }
 
 .info {
@@ -134,30 +132,6 @@ textarea {
   font-size: 13px;
 }
 
-@media print {
-  body {
-    background: white;
-  }
-
-  .form-box,
-  h1,
-  .subtitle {
-    display: none;
-  }
-
-  .container {
-    margin: 0;
-    max-width: 100%;
-  }
-
-  .quote-box {
-    box-shadow: none;
-  }
-
-  .pdf-btn {
-    display: none;
-  }
-}
 </style>
 </head>
 
@@ -174,45 +148,66 @@ Create professional quotations in minutes.
 <div class="form-box">
 
 <label>Business Name</label>
-<input id="business" type="text" placeholder="e.g. Legend Web Design">
+<input id="business" type="text"
+placeholder="e.g. Legend Web Design">
 
 <label>Business Phone</label>
-<input id="phone" type="tel" placeholder="e.g. +234 706 130 3234">
+<input id="phone" type="tel"
+placeholder="e.g. +234 706 130 3234">
 
 <label>Business Address</label>
-<input id="address" type="text" placeholder="e.g. Abuja, Nigeria">
+<input id="address" type="text"
+placeholder="e.g. Abuja, Nigeria">
 
 <label>Customer Name</label>
-<input id="customer" type="text" placeholder="e.g. John Smith">
+<input id="customer" type="text"
+placeholder="e.g. John Smith">
 
 <label>Customer Email</label>
-<input id="email" type="email" placeholder="e.g. john@example.com">
+<input id="email" type="email"
+placeholder="e.g. john@example.com">
 
 <label>Service / Project</label>
-<input id="service" type="text" placeholder="e.g. Restaurant Website">
+<input id="service" type="text"
+placeholder="e.g. Restaurant Website">
 
 <label>Description</label>
-<textarea id="description" placeholder="Describe the project or service"></textarea>
+<textarea id="description"
+placeholder="Describe the project or service"></textarea>
 
 <label>Price</label>
-<input id="price" type="number" placeholder="e.g. 300">
+<input id="price" type="number"
+placeholder="e.g. 300">
 
 <label>Currency</label>
+
 <select id="currency">
-  <option value="$">USD ($)</option>
-  <option value="£">GBP (£)</option>
-  <option value="€">EUR (€)</option>
-  <option value="₦">NGN (₦)</option>
+
+<option value="$">USD ($)</option>
+
+<option value="£">GBP (£)</option>
+
+<option value="€">EUR (€)</option>
+
+<option value="₦">NGN (₦)</option>
+
 </select>
 
 <label>Delivery Time</label>
-<input id="delivery" type="text" placeholder="e.g. 7 days">
 
-<button class="generate-btn" onclick="generateQuote()">
+<input id="delivery" type="text"
+placeholder="e.g. 7 days">
+
+<button
+class="generate-btn"
+onclick="generateQuote()">
+
 GENERATE QUOTE
+
 </button>
 
 </div>
+
 
 <div class="quote-box">
 
@@ -231,44 +226,70 @@ Your Business
 <div class="business-contact">
 
 <div>
-📞 <span id="qPhone">Your phone</span>
+📞 <strong>Phone:</strong>
+<span id="qPhone"></span>
 </div>
 
 <div>
-📍 <span id="qAddress">Your address</span>
+📍 <strong>Address:</strong>
+<span id="qAddress"></span>
 </div>
 
 </div>
 
 </div>
+
 
 <div>
-Quote No: <span id="qNumber"></span>
+
+Quote No:
+<span id="qNumber"></span>
+
 <br>
-Date: <span id="qDate"></span>
+
+Date:
+<span id="qDate"></span>
+
 </div>
 
 </div>
+
 
 <div class="info">
+
 <strong>Customer:</strong>
+
 <span id="qCustomer"></span>
+
 </div>
 
+
 <div class="info">
+
 <strong>Email:</strong>
+
 <span id="qEmail"></span>
+
 </div>
 
+
 <div class="info">
+
 <strong>Project:</strong>
+
 <span id="qService"></span>
+
 </div>
 
+
 <div class="info">
+
 <strong>Delivery:</strong>
+
 <span id="qDelivery"></span>
+
 </div>
+
 
 <div class="description">
 
@@ -278,21 +299,33 @@ Date: <span id="qDate"></span>
 
 </div>
 
+
 <div class="total">
 
 Total:
-<span id="qCurrency">$</span><span id="qPrice">0</span>
+
+<span id="qCurrency">$</span>
+
+<span id="qPrice">0</span>
 
 </div>
 
-<button class="pdf-btn" onclick="downloadPDF()">
+
+<button
+class="pdf-btn"
+onclick="downloadPDF()">
+
 DOWNLOAD PDF
+
 </button>
+
 
 <div class="footer">
 
 Thank you for your business.
+
 <br>
+
 Powered by Legend12Tech QuickQuote
 
 </div>
@@ -300,6 +333,7 @@ Powered by Legend12Tech QuickQuote
 </div>
 
 </div>
+
 
 <script>
 
@@ -343,9 +377,246 @@ new Date().toLocaleDateString();
 
 }
 
+
 function downloadPDF() {
 
-window.print();
+var business =
+document.getElementById("business").value;
+
+var phone =
+document.getElementById("phone").value;
+
+var address =
+document.getElementById("address").value;
+
+var customer =
+document.getElementById("customer").value;
+
+var email =
+document.getElementById("email").value;
+
+var service =
+document.getElementById("service").value;
+
+var description =
+document.getElementById("description").value;
+
+var price =
+document.getElementById("price").value;
+
+var currency =
+document.getElementById("currency").value;
+
+var delivery =
+document.getElementById("delivery").value;
+
+var quoteNumber =
+document.getElementById("qNumber").textContent;
+
+var date =
+document.getElementById("qDate").textContent;
+
+
+var pdfWindow = window.open("", "_blank");
+
+
+pdfWindow.document.write(`
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Quotation ${quoteNumber}</title>
+
+<style>
+
+body {
+font-family: Arial, sans-serif;
+padding: 40px;
+color: #17202a;
+}
+
+.page {
+max-width: 800px;
+margin: auto;
+}
+
+.header {
+display: flex;
+justify-content: space-between;
+border-bottom: 2px solid #222;
+padding-bottom: 20px;
+margin-bottom: 25px;
+}
+
+.title {
+font-size: 32px;
+font-weight: bold;
+}
+
+.business {
+font-size: 22px;
+font-weight: bold;
+margin-top: 8px;
+}
+
+.contact {
+margin-top: 10px;
+line-height: 1.8;
+}
+
+.meta {
+text-align: right;
+line-height: 1.8;
+}
+
+.row {
+margin: 14px 0;
+font-size: 16px;
+}
+
+.description {
+margin-top: 25px;
+padding: 18px;
+background: #f4f4f4;
+border-radius: 8px;
+}
+
+.total {
+margin-top: 30px;
+padding-top: 20px;
+border-top: 2px solid #222;
+text-align: right;
+font-size: 28px;
+font-weight: bold;
+}
+
+.footer {
+margin-top: 50px;
+text-align: center;
+font-size: 13px;
+color: #666;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="page">
+
+<div class="header">
+
+<div>
+
+<div class="title">
+QUOTATION
+</div>
+
+<div class="business">
+${business}
+</div>
+
+<div class="contact">
+
+📞 Phone: ${phone}
+
+<br>
+
+📍 Address: ${address}
+
+</div>
+
+</div>
+
+
+<div class="meta">
+
+Quote No: ${quoteNumber}
+
+<br>
+
+Date: ${date}
+
+</div>
+
+</div>
+
+
+<div class="row">
+<strong>Customer:</strong>
+${customer}
+</div>
+
+
+<div class="row">
+<strong>Email:</strong>
+${email}
+</div>
+
+
+<div class="row">
+<strong>Project:</strong>
+${service}
+</div>
+
+
+<div class="row">
+<strong>Delivery:</strong>
+${delivery}
+</div>
+
+
+<div class="description">
+
+<strong>Description</strong>
+
+<p>
+${description}
+</p>
+
+</div>
+
+
+<div class="total">
+
+Total:
+${currency}${price}
+
+</div>
+
+
+<div class="footer">
+
+Thank you for your business.
+
+<br>
+
+Powered by Legend12Tech QuickQuote
+
+</div>
+
+</div>
+
+</body>
+
+</html>
+
+`);
+
+
+pdfWindow.document.close();
+
+pdfWindow.focus();
+
+setTimeout(function() {
+
+pdfWindow.print();
+
+}, 500);
 
 }
 
