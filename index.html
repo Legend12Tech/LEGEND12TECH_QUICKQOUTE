@@ -242,14 +242,27 @@
 </div>
 function generateQuote() {
 
-<script>
+  document.getElementById("qBusiness").textContent =
+    document.getElementById("business").value;
 
+  document.getElementById("qCustomer").textContent =
+    document.getElementById("customer").value;
 
-document.getElementById("qPrice").textContent =
+  document.getElementById("qService").textContent =
+    document.getElementById("service").value;
+
+  document.getElementById("qDescription").textContent =
+    document.getElementById("description").value;
+
+  document.getElementById("qPrice").textContent =
     document.getElementById("price").value;
 
-document.getElementById("qCurrency").textContent =
+  document.getElementById("qCurrency").textContent =
     document.getElementById("currency").value;
+
+  document.getElementById("qDelivery").textContent =
+    document.getElementById("delivery").value;
+}
 
 
   const today = new Date();
