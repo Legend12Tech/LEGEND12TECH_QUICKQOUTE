@@ -156,7 +156,13 @@
 
   <label>Price</label>
   <input id="price" type="number" placeholder="e.g. 300">
-
+<label>Currency</label>
+<select id="currency">
+  <option value="$">USD ($)</option>
+  <option value="£">GBP (£)</option>
+  <option value="€">EUR (€)</option>
+  <option value="₦">NGN (₦)</option>
+</select>
   <label>Delivery Time</label>
   <input id="delivery" type="text" placeholder="e.g. 7 days">
 
@@ -220,7 +226,7 @@
 
 
     <div class="total">
-      Total: $<span id="qPrice"></span>
+      Total: <span id="qCurrency"></span><span id="qPrice"></span>
     </div>
 
     <div class="footer">
@@ -254,7 +260,8 @@ function generateQuote() {
 
   document.getElementById("qPrice").textContent =
     document.getElementById("price").value;
-
+const currency = document.getElementById("currency").value;
+document.getElementById("qCurrency").textContent = currency;
   document.getElementById("qDelivery").textContent =
     document.getElementById("delivery").value;
 
