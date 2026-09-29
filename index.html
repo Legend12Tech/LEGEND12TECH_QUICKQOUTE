@@ -125,11 +125,93 @@ body {
 }
 
 
+/* AUDIENCE */
+
+.audience-box {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.audience-box h2 {
+  margin-top: 0;
+  font-size: 25px;
+}
+
+.audience-box p {
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+.audience-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.audience-item {
+  background: #f3f6fa;
+  padding: 13px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+
+/* HOW IT WORKS */
+
+.how-box {
+  background: #0b1f4d;
+  color: white;
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+}
+
+.how-box h2 {
+  text-align: center;
+  margin-top: 0;
+}
+
+.steps {
+  display: grid;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.step {
+  background: rgba(255,255,255,0.10);
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.step-number {
+  font-size: 13px;
+  color: #79b2ff;
+  font-weight: bold;
+}
+
+.step strong {
+  display: block;
+  margin-top: 5px;
+}
+
+.step small {
+  display: block;
+  margin-top: 5px;
+  color: #dbeafe;
+}
+
+
 /* BOXES */
 
 .form-box,
 .quote-box,
-.history-box {
+.history-box,
+.feedback-box {
   background: white;
   padding: 25px;
   border-radius: 12px;
@@ -202,6 +284,11 @@ button {
 
 .delete-btn {
   background: #dc2626;
+  color: white;
+}
+
+.feedback-btn {
+  background: #1677ff;
   color: white;
 }
 
@@ -280,6 +367,27 @@ button {
 }
 
 
+/* FEEDBACK */
+
+.feedback-box {
+  text-align: center;
+}
+
+.feedback-box h2 {
+  margin-top: 0;
+}
+
+.feedback-box p {
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+.feedback-box textarea {
+  text-align: left;
+  margin-top: 10px;
+}
+
+
 /* FOOTER */
 
 .footer {
@@ -300,6 +408,10 @@ button {
 }
 
 .features {
+  grid-template-columns: 1fr 1fr;
+}
+
+.audience-list {
   grid-template-columns: 1fr 1fr;
 }
 
@@ -416,6 +528,115 @@ Share with customers
 <small>
 Save your quotations
 </small>
+
+</div>
+
+</div>
+
+
+<!-- WHO IS IT FOR -->
+
+<div class="audience-box">
+
+<h2>
+Who is QuickQuote for?
+</h2>
+
+<p>
+QuickQuote is built for people and businesses
+who need to create professional quotations quickly.
+</p>
+
+<div class="audience-list">
+
+<div class="audience-item">
+👨‍💻 Freelancers
+</div>
+
+<div class="audience-item">
+🏢 Small Businesses
+</div>
+
+<div class="audience-item">
+🎨 Designers
+</div>
+
+<div class="audience-item">
+💻 Developers
+</div>
+
+<div class="audience-item">
+📊 Consultants
+</div>
+
+<div class="audience-item">
+🚀 Entrepreneurs
+</div>
+
+</div>
+
+</div>
+
+
+<!-- HOW IT WORKS -->
+
+<div class="how-box">
+
+<h2>
+How QuickQuote Works
+</h2>
+
+<div class="steps">
+
+<div class="step">
+
+<div class="step-number">
+01
+</div>
+
+<strong>
+Enter your details
+</strong>
+
+<small>
+Add your business, customer and project information.
+</small>
+
+</div>
+
+
+<div class="step">
+
+<div class="step-number">
+02
+</div>
+
+<strong>
+Generate your quote
+</strong>
+
+<small>
+Create a professional quotation in seconds.
+</small>
+
+</div>
+
+
+<div class="step">
+
+<div class="step-number">
+03
+</div>
+
+<strong>
+Download or share
+</strong>
+
+<small>
+Download your quotation as PDF or share it on WhatsApp.
+</small>
+
+</div>
 
 </div>
 
@@ -703,9 +924,41 @@ No saved quotes yet.
 </div>
 
 
+<!-- FEEDBACK -->
+
+<div class="feedback-box">
+
+<h2>
+💬 Help Us Improve QuickQuote
+</h2>
+
+<p>
+Tell us what you like, what is missing,
+or what you would like us to improve.
+</p>
+
+<textarea
+id="feedback"
+placeholder="Write your feedback here..."></textarea>
+
+<button
+class="feedback-btn"
+onclick="sendFeedback()">
+
+SEND FEEDBACK
+
+</button>
+
+</div>
+
+
 <div class="footer">
 
 © 2026 Legend12Tech QuickQuote
+
+<br>
+
+QuickQuote — by Legend12Tech
 
 </div>
 
@@ -1407,6 +1660,41 @@ encodeURIComponent(currency + price) +
 
 var whatsappURL =
 "https://wa.me/?text=" +
+message;
+
+
+window.open(
+whatsappURL,
+"_blank"
+);
+
+}
+
+
+/* FEEDBACK */
+
+function sendFeedback() {
+
+var feedback =
+document.getElementById("feedback").value.trim();
+
+
+if (!feedback) {
+
+alert("Please write your feedback first.");
+
+return;
+
+}
+
+
+var message =
+"Hello Legend12Tech, I have feedback about QuickQuote:%0A%0A" +
+encodeURIComponent(feedback);
+
+
+var whatsappURL =
+"https://wa.me/2347061303234?text=" +
 message;
 
 
