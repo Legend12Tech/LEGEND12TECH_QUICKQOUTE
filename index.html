@@ -1,161 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Legend12Tech QuickQuote</title>
+<title>Legend12Tech QuickQuote</title>
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f3f6fa;
-      margin: 0;
-      padding: 20px;
-    }
+<style>
+* {
+  box-sizing: border-box;
+}
 
-    .container {
-      max-width: 650px;
-      margin: auto;
-      background: white;
-      padding: 25px;
-      border-radius: 15px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-    }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f3f6fa;
+  color: #17202a;
+}
 
-    h1 {
-      text-align: center;
-      margin-bottom: 5px;
-    }
+.container {
+  max-width: 650px;
+  margin: 30px auto;
+  padding: 20px;
+}
 
-    .subtitle {
-      text-align: center;
-      color: #666;
-      margin-bottom: 30px;
-    }
+h1 {
+  text-align: center;
+  color: #111827;
+}
 
-    label {
-      display: block;
-      margin-top: 15px;
-      margin-bottom: 6px;
-      font-weight: bold;
-    }
+.subtitle {
+  text-align: center;
+  color: #6b7280;
+  margin-bottom: 25px;
+}
 
-    input,
-    textarea {
-      width: 100%;
-      box-sizing: border-box;
-      padding: 12px;
-      border: 1px solid #d5dbe3;
-      border-radius: 8px;
-      font-size: 16px;
-    }
+.form-box,
+.quote-box {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
 
-    textarea {
-      height: 90px;
-      resize: vertical;
-    }
+label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
 
-    button {
-      width: 100%;
-      margin-top: 25px;
-      padding: 14px;
-      background: #111827;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 17px;
-      font-weight: bold;
-    }
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+  font-size: 16px;
+}
 
-    button:hover {
-      background: #2563eb;
-    }
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
 
-    #quote {
-      display: none;
-      margin-top: 35px;
-      background: white;
-      border: 1px solid #ddd;
-      padding: 30px;
-      border-radius: 10px;
-    }
+.generate-btn,
+.pdf-btn {
+  width: 100%;
+  padding: 14px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 7px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
 
-    .quote-header {
-      display: flex;
-      justify-content: space-between;
-      border-bottom: 2px solid #111827;
-      padding-bottom: 15px;
-      margin-bottom: 20px;
-    }
+.generate-btn {
+  background: #111827;
+  color: white;
+}
 
-    .business-name {
-      font-size: 22px;
-      font-weight: bold;
-    }
+.pdf-btn {
+  background: #2563eb;
+  color: white;
+}
 
-    .quote-title {
-      font-size: 25px;
-      font-weight: bold;
-    }
+.quote-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
 
-    .quote-info {
-      margin-bottom: 20px;
-    }
+.quote-title {
+  font-size: 28px;
+  font-weight: bold;
+}
 
-    .quote-info p {
-      margin: 7px 0;
-    }
+.quote-number {
+  text-align: right;
+  color: #6b7280;
+  font-size: 14px;
+}
 
-    .description {
-      background: #f8fafc;
-      padding: 15px;
-      border-radius: 8px;
-      margin-top: 15px;
-    }
+.info {
+  margin: 12px 0;
+}
 
-    .total {
-      text-align: right;
-      font-size: 25px;
-      font-weight: bold;
-      margin-top: 25px;
-      border-top: 2px solid #ddd;
-      padding-top: 15px;
-    }
+.description {
+  background: #f9fafb;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
 
-    .footer {
-      text-align: center;
-      margin-top: 30px;
-      color: #666;
-      font-size: 14px;
-    }
-  </style>
+.total {
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 2px solid #e5e7eb;
+  text-align: right;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.footer {
+  text-align: center;
+  color: #6b7280;
+  margin-top: 25px;
+  font-size: 13px;
+}
+
+@media print {
+  body {
+    background: white;
+  }
+
+  .form-box,
+  h1,
+  .subtitle {
+    display: none;
+  }
+
+  .container {
+    margin: 0;
+    max-width: 100%;
+  }
+
+  .quote-box {
+    box-shadow: none;
+  }
+
+  .pdf-btn {
+    display: none;
+  }
+}
+</style>
 </head>
 
 <body>
 
 <div class="container">
 
-  <h1>Legend12Tech QuickQuote</h1>
+<h1>Legend12Tech QuickQuote</h1>
 
-  <p class="subtitle">
-    Create a professional quotation in under 1 minute.
-  </p>
+<p class="subtitle">
+Create professional quotations in minutes.
+</p>
 
-  <label>Business Name</label>
-  <input id="business" type="text" placeholder="Enter your business name">
+<div class="form-box">
 
-  <label>Customer Name</label>
-  <input id="customer" type="text" placeholder="Enter customer's name">
+<label>Business Name</label>
+<input id="business" type="text" placeholder="e.g. Legend Web Design">
 
-  <label>Service / Project</label>
-  <input id="service" type="text" placeholder="e.g. Website Design">
+<label>Customer Name</label>
+<input id="customer" type="text" placeholder="e.g. John Smith">
 
-  <label>Description</label>
-  <textarea id="description" placeholder="Describe what the customer wants"></textarea>
+<label>Service / Project</label>
+<input id="service" type="text" placeholder="e.g. Restaurant Website">
 
-  <label>Price</label>
-  <input id="price" type="number" placeholder="e.g. 300">
+<label>Description</label>
+<textarea id="description" placeholder="Describe the project or service"></textarea>
+
+<label>Price</label>
+<input id="price" type="number" placeholder="e.g. 300">
+
 <label>Currency</label>
 <select id="currency">
   <option value="$">USD ($)</option>
@@ -163,84 +196,75 @@
   <option value="€">EUR (€)</option>
   <option value="₦">NGN (₦)</option>
 </select>
-  <label>Delivery Time</label>
-  <input id="delivery" type="text" placeholder="e.g. 7 days">
 
-  <button onclick="generateQuote()">
-    GENERATE QUOTE
+<label>Delivery Time</label>
+<input id="delivery" type="text" placeholder="e.g. 7 days">
+
+<button class="generate-btn" onclick="generateQuote()">
+  GENERATE QUOTE
+</button>
+
+</div>
+
+
+<div class="quote-box" id="quote">
+
+  <div class="quote-header">
+
+    <div>
+      <div class="quote-title">QUOTATION</div>
+      <div id="qBusiness">Your Business</div>
+    </div>
+
+    <div class="quote-number">
+      Quote No: <span id="qNumber"></span><br>
+      Date: <span id="qDate"></span>
+    </div>
+
+  </div>
+
+  <div class="info">
+    <strong>Customer:</strong>
+    <span id="qCustomer"></span>
+  </div>
+
+  <div class="info">
+    <strong>Project:</strong>
+    <span id="qService"></span>
+  </div>
+
+  <div class="info">
+    <strong>Delivery:</strong>
+    <span id="qDelivery"></span>
+  </div>
+
+  <div class="description">
+    <strong>Description</strong>
+    <p id="qDescription"></p>
+  </div>
+
+  <div class="total">
+    Total:
+    <span id="qCurrency">$</span><span id="qPrice">0</span>
+  </div>
+
+  <button class="pdf-btn" onclick="downloadPDF()">
+    DOWNLOAD PDF
   </button>
 
-
-  <div id="quote">
-
-    <div class="quote-header">
-
-      <div class="business-name" id="qBusiness">
-        Business Name
-      </div>
-
-      <div class="quote-title">
-        QUOTATION
-      </div>
-
-    </div>
-
-
-    <div class="quote-info">
-
-      <p>
-        <strong>Quote No:</strong>
-        <span id="qNumber"></span>
-      </p>
-
-      <p>
-        <strong>Date:</strong>
-        <span id="qDate"></span>
-      </p>
-
-      <p>
-        <strong>Customer:</strong>
-        <span id="qCustomer"></span>
-      </p>
-
-      <p>
-        <strong>Project:</strong>
-        <span id="qService"></span>
-      </p>
-
-      <p>
-        <strong>Delivery:</strong>
-        <span id="qDelivery"></span>
-      </p>
-
-    </div>
-
-
-    <div class="description">
-
-      <strong>Description</strong>
-
-      <p id="qDescription"></p>
-
-    </div>
-
-
-    <div class="total">
-      Total: <span id="qCurrency"></span><span id="qPrice"></span>
-    </div>
-
-    <div class="footer">
-      Thank you for your business.
-      <br>
-      Powered by Legend12Tech QuickQuote
-    </div>
-<button onclick="downloadPDF()">
-  DOWNLOAD PDF
-</button>
+  <div class="footer">
+    Thank you for your business.<br>
+    Powered by Legend12Tech QuickQuote
   </div>
 
 </div>
-function generateQuote().
+
+</div>
+
+
+<script>
+
+function generateQuote() {
 
   document.getElementById("qBusiness").textContent =
     document.getElementById("business").value;
@@ -263,23 +287,18 @@ function generateQuote().
   document.getElementById("qDelivery").textContent =
     document.getElementById("delivery").value;
 
-
-
-  const today = new Date();
-
-  document.getElementById("qDate").textContent =
-    today.toLocaleDateString();
-
-
   document.getElementById("qNumber").textContent =
     "Q-" + Math.floor(1000 + Math.random() * 9000);
 
+  document.getElementById("qDate").textContent =
+    new Date().toLocaleDateString();
 
-  document.getElementById("quote").style.display = "block";
 }
+
 function downloadPDF() {
   window.print();
 }
+
 </script>
 
 </body>
